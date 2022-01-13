@@ -8,6 +8,12 @@
 ## This function creates a special "matrix" object 
 ## that can cache its inverse
 makeCacheMatrix <- function(x = matrix()) {
+  inverse <- NULL
+  set <- function(y){
+    x <<- y
+    inverser <<- NULL
+  }
+  ##to justify whether there is already a inverse matrix in the input
   if(exists("inverse")){
     inverse <<- inverse
     message("we already have one inverse!")
@@ -29,8 +35,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## (and the matrix has not changed), 
 ## then the cachesolve should retrieve the inverse from the cache.
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
-  inverse <- x$getinverse()
+  inverse <- x$getinverse()# Return a matrix that is the inverse of 'x'
   if(!is.null(inverse)){
     message("already exists!")
     return(inverse)
